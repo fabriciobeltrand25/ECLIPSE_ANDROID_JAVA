@@ -1,7 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.DataBetweenActivities" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Versión oscura del tema base -->
+    <style name="Base.Theme.DataBetweenActivities" parent="android:Theme.Holo.NoActionBar">
     </style>
+
+    <style name="Theme.DataBetweenActivities" parent="Base.Theme.DataBetweenActivities" />
 </resources>
