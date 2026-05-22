@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Tema base de la aplicación usando Holo Light sin barra de acción -->
-    <style name="Base.Theme.DataBetweenActivities" parent="android:Theme.Holo.Light.NoActionBar">
-        <!-- Aquí puedes personalizar colores clásicos si lo necesitas más adelante -->
-    </style>
-
-    <style name="Theme.DataBetweenActivities" parent="Base.Theme.DataBetweenActivities" />
-</resources>

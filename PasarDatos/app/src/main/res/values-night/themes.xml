@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Versión oscura del tema base -->
-    <style name="Base.Theme.DataBetweenActivities" parent="android:Theme.Holo.NoActionBar">
-    </style>
-
-    <style name="Theme.DataBetweenActivities" parent="Base.Theme.DataBetweenActivities" />
-</resources>
