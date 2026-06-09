@@ -1,0 +1,75 @@
+package com.example.appprestamo;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+    private EditText etCapital, etInteres, etPlazo, etTotalPagar, etTotalInteres, etCuotaMensual;
+    private Button btnCalcular, btnLimpiar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Inicializar vistas
+        etCapital = findViewById(R.id.etCapital);
+        etInteres = findViewById(R.id.etInteres);
+        etPlazo = findViewById(R.id.etPlazo);
+        etTotalPagar = findViewById(R.id.etTotalPagar);
+        etTotalInteres = findViewById(R.id.etTotalInteres);
+        etCuotaMensual = findViewById(R.id.etCuotaMensual);
+        btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+
+        btnCalcular.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				calcularPrestamo();
+			}
+		});
+        btnLimpiar.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				limpiarCampos();
+			}
+		});
+    }
+
+    private void calcularPrestamo() {
+        if (etCapital.getText().toString().isEmpty() || etInteres.getText().toString().isEmpty() || etPlazo.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double capital = Double.parseDouble(etCapital.getText().toString());
+        double interesAnual = Double.parseDouble(etInteres.getText().toString()) / 100;
+        int años = Integer.parseInt(etPlazo.getText().toString());
+
+        // Ejemplo de cálculo simple
+        double totalInteres = capital * interesAnual * años;
+        double totalPagar = capital + totalInteres;
+        double cuotaMensual = totalPagar / (años * 12);
+
+        etTotalPagar.setText(String.format("%.2f", totalPagar));
+        etTotalInteres.setText(String.format("%.2f", totalInteres));
+        etCuotaMensual.setText(String.format("%.2f", cuotaMensual));
+    }
+
+    private void limpiarCampos() {
+        etCapital.setText("");
+        etInteres.setText("");
+        etPlazo.setText("");
+        etTotalPagar.setText("");
+        etTotalInteres.setText("");
+        etCuotaMensual.setText("");
+    }
+}
