@@ -9,7 +9,8 @@ public class MainActivity extends Activity {
     private Spinner spDe, spA;
     private EditText etValor, etResultado;
     private Button btnConvertir, btnLimpiar;
-    private String[] unidades = {"C", "F", "cm", "mts", "km", "m", "lb", "kg"};
+    private String[] Campos = {"C", "F", "cm", "mts", "km", "m", "lb", "kg"};
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,11 @@ public class MainActivity extends Activity {
         etResultado = (EditText) findViewById(R.id.etResultado);
         btnConvertir = (Button) findViewById(R.id.btnConvertir);
         btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
+        
+        
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, unidades);
+        
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Campos);
         spDe.setAdapter(adapter);
         spA.setAdapter(adapter);
 
@@ -54,7 +58,7 @@ public class MainActivity extends Activity {
         double valor = Double.parseDouble(etValor.getText().toString());
         double res = 0;
 
-        // Lógica de validación de tipos
+        
         boolean esTemperatura = (de.equals("C") || de.equals("F")) && (a.equals("C") || a.equals("F"));
         boolean esPeso = (de.equals("kg") || de.equals("lb")) && (a.equals("kg") || a.equals("lb"));
         boolean esLongitud = (de.equals("cm") || de.equals("mts") || de.equals("km") || de.equals("m")) && 
@@ -69,7 +73,8 @@ public class MainActivity extends Activity {
             else if (de.equals("kg")) res = valor * 2.20462;
             else res = valor / 2.20462;
         } else if (esLongitud) {
-            // Ejemplo básico: convertir todo a metros primero
+        	
+            
             double enMetros = 0;
             if (de.equals("cm")) enMetros = valor / 100;
             else if (de.equals("mts") || de.equals("m")) enMetros = valor;

@@ -3,3 +3,5 @@
 2026-06-09 20:26:07,797 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@76958521{/wse,null,AVAILABLE}
 2026-06-09 20:26:07,812 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@59b1665a{HTTP/1.1}{0.0.0.0:65406}
 2026-06-09 20:26:07,812 [main] INFO  org.eclipse.jetty.server.Server - Started @1942268ms
+2026-06-09 21:03:21,717 [Framework stop] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@59b1665a{HTTP/1.1}{0.0.0.0:0}
+2026-06-09 21:03:21,813 [Framework stop] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@76958521{/wse,null,UNAVAILABLE}

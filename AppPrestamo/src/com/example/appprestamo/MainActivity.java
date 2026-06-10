@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar vistas
+        
         etCapital = findViewById(R.id.etCapital);
         etInteres = findViewById(R.id.etInteres);
         etPlazo = findViewById(R.id.etPlazo);
@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
         double interesAnual = Double.parseDouble(etInteres.getText().toString()) / 100;
         int años = Integer.parseInt(etPlazo.getText().toString());
 
-        // Ejemplo de cálculo simple
+       
         double totalInteres = capital * interesAnual * años;
         double totalPagar = capital + totalInteres;
         double cuotaMensual = totalPagar / (años * 12);
