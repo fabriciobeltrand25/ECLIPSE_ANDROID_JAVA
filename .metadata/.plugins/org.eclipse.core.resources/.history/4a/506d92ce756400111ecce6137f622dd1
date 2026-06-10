@@ -1,0 +1,60 @@
+package com.example.appconversor;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.*;
+import java.util.Arrays;
+
+public class MainActivity extends Activity {
+    private Spinner spDe, spA;
+    private EditText etValor, etResultado;
+    private String[] unidades = {"C", "F", "cm", "mts", "km", "m", "lb", "kg"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        spDe = findViewById(R.id.spDe);
+        spA = findViewById(R.id.spA);
+        etValor = findViewById(R.id.etValor);
+        etResultado = findViewById(R.id.etResultado);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, unidades);
+        spDe.setAdapter(adapter);
+        spA.setAdapter(adapter);
+
+        findViewById(R.id.btnConvertir).setOnClickListener(v -> convertir());
+        findViewById(R.id.btnLimpiar).setOnClickListener(v -> {
+            etValor.setText("");
+            etResultado.setText("");
+        });
+    }
+
+    private void convertir() {
+        String de = spDe.getSelectedItem().toString();
+        String a = spA.getSelectedItem().toString();
+        
+        if(etValor.getText().toString().isEmpty()) return;
+        double valor = Double.parseDouble(etValor.getText().toString());
+
+        // Lógica de validación de tipos
+        if ((de.equals("C") || de.equals("F")) && (a.equals("C") || a.equals("F"))) {
+            if (de.equals(a)) etResultado.setText(String.valueOf(valor));
+            else if (de.equals("C")) etResultado.setText(String.format("%.2f", (valor * 9/5) + 32));
+            else etResultado.setText(String.format("%.2f", (valor - 32) * 5/9));
+        } 
+        else if ((Arrays.asList("cm", "mts", "km", "m").contains(de)) && (Arrays.asList("cm", "mts", "km", "m").contains(a))) {
+            // Lógica simple de conversión de longitud (ejemplo base)
+            etResultado.setText("Conversión lógica longitud"); 
+        }
+        else if ((de.equals("lb") || de.equals("kg")) && (a.equals("lb") || a.equals("kg"))) {
+            if (de.equals("lb")) etResultado.setText(String.format("%.2f", valor * 0.453592));
+            else etResultado.setText(String.format("%.2f", valor * 2.20462));
+        }
+        else {
+            Toast.makeText(this, "Error: Unidad incompatible", Toast.LENGTH_SHORT).show();
+            etResultado.setText("");
+        }
+    }
+}
